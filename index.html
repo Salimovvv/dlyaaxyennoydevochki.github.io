@@ -30,7 +30,7 @@
         }
 
         /* ============================================================
-           АНИМИРОВАННЫЙ ГРАДИЕНТНЫЙ ФОН (цвета те же)
+           АНИМИРОВАННЫЙ ГРАДИЕНТНЫЙ ФОН
            ============================================================ */
         .gradient-bg {
             position: fixed;
@@ -119,7 +119,7 @@
         }
 
         /* ============================================================
-           КОНТЕЙНЕР — НОВАЯ СТРУКТУРА
+           КОНТЕЙНЕР
            ============================================================ */
         .container {
             position: relative;
@@ -145,7 +145,7 @@
         }
 
         /* ============================================================
-           ЛЕВАЯ КОЛОНКА — ОБЛОЖКА + ПЛЕЕР
+           ЛЕВАЯ КОЛОНКА
            ============================================================ */
         .left-col {
             display: flex;
@@ -156,7 +156,6 @@
             align-self: flex-start;
         }
 
-        /* Обложка — теперь с плавающей тенью */
         .cover-wrapper {
             position: relative;
             width: 100%;
@@ -182,7 +181,6 @@
             display: block;
         }
 
-        /* Свечение вокруг обложки */
         .cover-wrapper::before {
             content: '';
             position: absolute;
@@ -196,7 +194,6 @@
             filter: blur(20px);
         }
 
-        /* Декоративный уголок на обложке */
         .cover-badge {
             position: absolute;
             bottom: 20px;
@@ -352,8 +349,38 @@
             opacity: 1;
         }
 
+        /* Кнопка перезагрузки трека */
+        .reload-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 240, 0.08);
+            border-radius: 50px;
+            color: rgba(255, 215, 240, 0.3);
+            padding: 6px 18px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-family: -apple-system, sans-serif;
+            transition: all 0.3s ease;
+            margin-top: 4px;
+        }
+
+        .reload-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 215, 240, 0.6);
+        }
+
+        /* Ошибка */
+        .error-msg {
+            color: rgba(255, 150, 150, 0.5);
+            font-size: 11px;
+            font-family: -apple-system, sans-serif;
+            text-align: center;
+            margin-top: 6px;
+            display: none;
+        }
+
         /* ============================================================
-           ПРАВАЯ КОЛОНКА — ПИСЬМО
+           ПРАВАЯ КОЛОНКА
            ============================================================ */
         .right-col {
             display: flex;
@@ -361,7 +388,6 @@
             gap: 25px;
         }
 
-        /* Верхний орнамент */
         .ornament-top {
             text-align: center;
             font-size: 20px;
@@ -371,7 +397,9 @@
             padding: 8px 0;
         }
 
-        /* ===== ПИСЬМО ===== */
+        /* ============================================================
+           ПИСЬМО
+           ============================================================ */
         .letter {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px);
@@ -382,7 +410,6 @@
             position: relative;
         }
 
-        /* Декоративные элементы письма */
         .letter::before {
             content: '❀';
             position: absolute;
@@ -484,6 +511,117 @@
         }
 
         /* ============================================================
+           ГАЛЕРЕЯ ФОТО
+           ============================================================ */
+        .gallery-section {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 30px 28px 35px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .gallery-section::before {
+            content: '♡';
+            position: absolute;
+            top: 16px;
+            right: 28px;
+            color: rgba(255, 215, 240, 0.06);
+            font-size: 24px;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: rgba(255, 215, 240, 0.25);
+            text-transform: uppercase;
+            font-family: -apple-system, sans-serif;
+            font-weight: 300;
+            margin-bottom: 22px;
+        }
+
+        .gallery-title span {
+            background: linear-gradient(135deg, #f7c6e0, #d4a0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 500;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            border: 2px solid rgba(255, 215, 240, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.04);
+            border-color: rgba(255, 215, 240, 0.25);
+            box-shadow: 0 15px 45px rgba(200, 130, 255, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 22px;
+            background: linear-gradient(135deg,
+                rgba(255, 182, 215, 0.1),
+                rgba(180, 130, 255, 0.1),
+                rgba(255, 182, 215, 0.05)
+            );
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item::after {
+            content: '✦';
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            color: rgba(255, 215, 240, 0.15);
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* ============================================================
            НИЖНИЙ ДЕКОР
            ============================================================ */
         .bottom-deco {
@@ -547,6 +685,15 @@
                 font-size: 15px;
                 line-height: 1.9;
             }
+
+            .gallery-section {
+                padding: 24px 20px 28px;
+                border-radius: 30px;
+            }
+
+            .gallery-grid {
+                gap: 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -608,6 +755,24 @@
                 font-size: 18px;
                 letter-spacing: 10px;
             }
+
+            .gallery-section {
+                padding: 18px 14px 22px;
+                border-radius: 24px;
+            }
+
+            .gallery-grid {
+                gap: 10px;
+            }
+
+            .gallery-title {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            .gallery-item {
+                border-radius: 14px;
+            }
         }
     </style>
 </head>
@@ -651,6 +816,10 @@
                     </div>
                     <span class="time" id="duration">0:00</span>
                 </div>
+
+                <!-- Кнопка перезагрузки -->
+                <button class="reload-btn" id="reloadBtn">⟳ перезагрузить трек</button>
+                <div class="error-msg" id="errorMsg">⛔ Трек не найден. Проверь файл track.mp3</div>
             </div>
         </div>
     </div>
@@ -668,7 +837,6 @@
             </div>
 
             <div class="letter-body">
-
                 <p>
                     <span class="highlight">Любимая и ценная подруга</span>,
                     поздравляю тебя с твоим днём — сегодня день, когда тебе надо отдохнуть
@@ -713,6 +881,28 @@
                 <div class="hearts">♥ ♥ ♥</div>
 
                 <div class="signature">— твой друг, всегда рядом</div>
+            </div>
+        </div>
+
+        <!-- ===== ГАЛЕРЕЯ ФОТО ===== -->
+        <div class="gallery-section">
+            <div class="gallery-title">
+                <span>✧ наши моменты ✧</span>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="photo1.jpg" alt="Наше фото 1" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%233d1a5c%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%22 y=%22110%22 font-family=%22Georgia%22 font-size=%2230%22 fill=%22%23c77d9e%22%3E♥%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo2.jpg" alt="Наше фото 2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%233d1a5c%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%22 y=%22110%22 font-family=%22Georgia%22 font-size=%2230%22 fill=%22%23c77d9e%22%3E♥%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo3.jpg" alt="Наше фото 3" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%233d1a5c%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%22 y=%22110%22 font-family=%22Georgia%22 font-size=%2230%22 fill=%22%23c77d9e%22%3E♥%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="gallery-item">
+                    <img src="photo4.jpg" alt="Наше фото 4" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%233d1a5c%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%22 y=%22110%22 font-family=%22Georgia%22 font-size=%2230%22 fill=%22%23c77d9e%22%3E♥%3C/text%3E%3C/svg%3E'">
+                </div>
             </div>
         </div>
     </div>
@@ -770,40 +960,44 @@
     })();
 
     // ================================================================
-    //  3. АУДИОПЛЕЕР
+    //  3. АУДИОПЛЕЕР (С ПОДДЕРЖКОЙ ОШИБОК)
     // ================================================================
     (function() {
-        const audio = new Audio('track.mp3');
+        // === СОЗДАЁМ АУДИО С РЕЗЕРВНЫМ ИСТОЧНИКОМ ===
+        const audio = new Audio();
+        audio.src = 'track.mp3';
+        audio.preload = 'auto';
+
+        // === ЭЛЕМЕНТЫ ===
         const playBtn = document.getElementById('playBtn');
         const playIcon = document.getElementById('playIcon');
         const progressFill = document.getElementById('progressFill');
         const progressBar = document.getElementById('progressBar');
         const currentTimeEl = document.getElementById('currentTime');
         const durationEl = document.getElementById('duration');
+        const reloadBtn = document.getElementById('reloadBtn');
+        const errorMsg = document.getElementById('errorMsg');
 
+        let isPlaying = false;
+
+        // === ФОРМАТИРОВАНИЕ ===
         function formatTime(seconds) {
-            if (isNaN(seconds) || seconds === Infinity) return '0:00';
+            if (isNaN(seconds) || seconds === Infinity || seconds < 0) return '0:00';
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return mins + ':' + (secs < 10 ? '0' : '') + secs;
         }
 
+        // === ОБНОВЛЕНИЕ ПРОГРЕССА ===
         function updateProgress() {
-            if (audio.duration) {
+            if (audio.duration && !isNaN(audio.duration)) {
                 const percent = (audio.currentTime / audio.duration) * 100;
-                progressFill.style.width = percent + '%';
+                progressFill.style.width = Math.min(100, percent) + '%';
                 currentTimeEl.textContent = formatTime(audio.currentTime);
             }
         }
 
-        function togglePlay() {
-            if (audio.paused) {
-                audio.play().catch(function() {});
-            } else {
-                audio.pause();
-            }
-        }
-
+        // === ОБНОВЛЕНИЕ ИКОНКИ ===
         function updateIcon() {
             if (audio.paused) {
                 playIcon.innerHTML = '<polygon points="5,3 19,12 5,21" />';
@@ -814,47 +1008,124 @@
             }
         }
 
-        audio.addEventListener('play', updateIcon);
-        audio.addEventListener('pause', updateIcon);
+        // === ПОКАЗ ОШИБКИ ===
+        function showError() {
+            errorMsg.style.display = 'block';
+            durationEl.textContent = '--:--';
+        }
+
+        function hideError() {
+            errorMsg.style.display = 'none';
+        }
+
+        // === ПЕРЕКЛЮЧЕНИЕ PLAY/PAUSE ===
+        function togglePlay() {
+            hideError();
+
+            if (audio.paused) {
+                audio.play().catch(function(err) {
+                    console.warn('Ошибка воспроизведения:', err);
+                    showError();
+                });
+            } else {
+                audio.pause();
+            }
+        }
+
+        // === ПЕРЕЗАГРУЗКА ТРЕКА ===
+        function reloadTrack() {
+            hideError();
+            audio.pause();
+            audio.currentTime = 0;
+            audio.src = 'track.mp3?' + Date.now(); // добавляем ? чтобы сбросить кеш
+            audio.load();
+            progressFill.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+            durationEl.textContent = '...';
+            updateIcon();
+
+            // Пробуем воспроизвести после загрузки
+            audio.play().catch(function(err) {
+                console.warn('Не удалось воспроизвести после перезагрузки:', err);
+                showError();
+            });
+        }
+
+        // === СОБЫТИЯ АУДИО ===
+        audio.addEventListener('play', function() {
+            isPlaying = true;
+            updateIcon();
+            hideError();
+        });
+
+        audio.addEventListener('pause', function() {
+            isPlaying = false;
+            updateIcon();
+        });
+
         audio.addEventListener('ended', function() {
+            isPlaying = false;
             updateIcon();
             progressFill.style.width = '0%';
             currentTimeEl.textContent = '0:00';
             audio.currentTime = 0;
         });
+
         audio.addEventListener('timeupdate', updateProgress);
 
         audio.addEventListener('loadedmetadata', function() {
             durationEl.textContent = formatTime(audio.duration);
+            hideError();
         });
 
-        if (audio.readyState >= 1) {
+        audio.addEventListener('loadeddata', function() {
             durationEl.textContent = formatTime(audio.duration);
-        } else {
-            audio.addEventListener('loadeddata', function() {
-                durationEl.textContent = formatTime(audio.duration);
-            });
-        }
+            hideError();
+        });
 
+        audio.addEventListener('error', function(e) {
+            console.error('Ошибка аудио:', e);
+            showError();
+            durationEl.textContent = '--:--';
+        });
+
+        // === КЛИКИ ===
         playBtn.addEventListener('click', togglePlay);
 
+        reloadBtn.addEventListener('click', reloadTrack);
+
         progressBar.addEventListener('click', function(e) {
-            if (!audio.duration) return;
-            var rect = progressBar.getBoundingClientRect();
-            var clickX = e.clientX - rect.left;
-            var width = rect.width;
-            var percent = Math.min(1, Math.max(0, clickX / width));
+            if (!audio.duration || isNaN(audio.duration)) return;
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percent = Math.min(1, Math.max(0, clickX / width));
             audio.currentTime = percent * audio.duration;
             progressFill.style.width = (percent * 100) + '%';
         });
 
-        audio.addEventListener('error', function() {
-            durationEl.textContent = '--:--';
-        });
-
+        // === ИНИЦИАЛИЗАЦИЯ ===
         updateIcon();
 
+        // Если трек уже загружен
+        if (audio.readyState >= 2) {
+            durationEl.textContent = formatTime(audio.duration);
+            hideError();
+        } else {
+            // Если трек не загрузился через 3 секунды — показываем ошибку
+            setTimeout(function() {
+                if (audio.readyState < 2) {
+                    showError();
+                }
+            }, 3000);
+        }
+
+        // Фикс для iOS
         document.addEventListener('touchstart', function() {}, { passive: true });
+
+        console.log('🎵 Плеер загружен. Файл: track.mp3');
+        console.log('📌 Если трек не играет — проверь, что файл track.mp3 лежит рядом с index.html');
+        console.log('📌 Название файла должно быть точно: track.mp3 (регистр важен!)');
     })();
 </script>
 
